@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('../asscets/fonts/BebasNeue.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Bababoom';
+    src: url('../asscets/fonts/BADABB.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+
+
+body, html{
+    background-color: #222222;
+    cursor: url(../cursor/cursor-1.cur), auto;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+.logo img {
+    height: 41px;
+    width: 130px  
+}
+
+.backG {
+    background: url(../img/img.jpg);
+    min-height: 900px;
+}
+
+.backG1 {
+    background-image: linear-gradient(transparent -200%, #181818);
+    min-height: 900px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(187, 183, 183);
+    height: 2.6rem;
+    width: 100%;
+    font-family: 'BebasNeue';
+}
+
+.lnk-nav {
+    margin-top: 7px;
+}
+
+.lnk-nav a {
+    color: gray;
+    text-decoration: none;
+    margin: 60px;
+    font-size: 20px;
+}
+
+
+.lnk-nav a:hover {
+    color: white;
+    cursor: url(../cursor/cursor-2.cur), auto;
+}
+
+
+.heroes {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    
+}
+
+.div-hero {
+    
+    border-radius: 6px;
+    margin: 15px;
+    background-color: #222222;
+    overflow: hidden;
+    width: 15%;
+    height: 400px;
+}
+
+
+.div-hero a img {
+    border-radius: 6px;  
+    width: 300px;
+    height: 350px;
+}
+
+.div-hero a{
+    cursor: url(../cursor/cursor-2.cur), auto;
+    text-decoration: none;
+    text-align: center;
+    color: gray;
+}
+
+
+
+
+.div-hero a:hover{
+    color: white;
+    
+}
+
+.btn-button {
+    display: flex;
+    justify-content: center;
+}
+
+#getMore {
+    border: 2px solid black;
+    margin: 15px;
+    cursor: url(../cursor/cursor-2.cur), auto;
+    background: url(../img/3dbd9d27430831556781252216b66b1c.jpg);
+    background-position: center;
+    color: rgb(14, 13, 13);
+    font-family: 'Bababoom';
+    font-size: 22px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#getMore:hover {
+    color: white;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    background-color: #181818;
+}
+
+.social div {
+    margin: 6px;
+}
+
+.social div path:hover {
+    fill: rgb(255, 245, 245);
+}
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: lightgrey;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .disppear{
+    animation: vanish 1s forwards;
+  }
+  @keyframes vanish {
+    100%{
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  

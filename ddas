@@ -1,0 +1,848 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Principal.Master.cs" Inherits="ANAJUSTRABENEFICIOS.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head runat="server">
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "",
+            "addressRegion": "",
+            "postalCode": "",
+            "streetAddress": ""
+        },
+                "description": "",
+                "name": "",
+        "email":"mailto:",
+        "telephone": "",
+        "logo": "img/logo.png",
+        "image": "img/logo.png",
+        "url": ""
+        }
+    </script>
+
+    <title><%: Page.Title %> ANAJUSTRA Benefícios</title>
+
+    <meta name="description" content="" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="br" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+    <link href="/css/estilo.css?v=15072020" rel="stylesheet" type="text/css" />
+    <% HttpCookie LOGADO = Request.Cookies["LOGADO"];
+        HttpCookie SINDICALIZADO = Request.Cookies["SINDICALIZADO"];
+    %>
+    <% if (LOGADO != null && SINDICALIZADO.Value == "S")
+        {
+    %>
+    <link href="/css/estilo_logado.css?v=07072020" rel="stylesheet" type="text/css" />
+    <%} %>
+
+
+
+    <link rel="stylesheet" href="/css/plugins/owl.carousel.css">
+    <link href="/Notiflix-1.8.0/Minified/notiflix-1.8.0.min.css" rel="stylesheet" />
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="Description" content="Garantir a defesa dos interesses dos servidores do judiciário federal atuando nas áreas jurídica, parlamentar, financeira e de benefícios." />
+    <meta name="Keywords" content="Associação Nacional dos Servidores do Judiciário Federal, ações, 13,23%, PCS, quintos, servidores, judiciário, trabalhista, benefícios, convênios, parlamentar, finanças, ANAJUSTRA Benefíos, benefícios, descontos, parceria, Convênios servidores" />
+
+    <style>
+        .ui-autocomplete {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            float: left;
+            display: none;
+            min-width: 160px;
+            max-width: 250px;
+            padding: 4px 0;
+            margin: 0 0 10px 25px;
+            list-style: none;
+            background-color: #ffffff;
+            border-color: #ccc;
+            border-color: rgba(0, 0, 0, 0.2);
+            border-style: solid;
+            border-width: 1px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding;
+            background-clip: padding-box;
+            *border-right-width: 2px;
+            height: auto;
+            *border-bottom-width: 2px;
+        }
+
+        .ui-menu-item-wrapper {
+            color: #000;
+            padding: 0 0 10px 10px;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .ui-menu-item > a.ui-corner-all {
+            display: block;
+            padding: 3px 15px;
+            clear: both;
+            font-weight: normal;
+            line-height: 18px;
+            color: #555555;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .ui-state-hover, .ui-state-active {
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #0088cc;
+            border-radius: 0px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            background-image: none;
+        }
+
+        .working {
+            padding-right: 100px;
+            background: url('/img/indicator.gif') no-repeat 95% center;
+            background-size: 20px 20px
+        }
+
+
+
+        /* Queries */
+        @media(max-width: 280px) {
+            .ui-autocomplete {
+                max-width: 248px;
+            }
+        }
+
+        @media(min-width: 281px) and (max-width: 360px) {
+            .ui-autocomplete {
+                max-width: 330px;
+            }
+        }
+
+        @media(min-width: 361px) and (max-width: 375px) {
+            .ui-autocomplete {
+                max-width: 343px;
+            }
+        }
+
+        @media(min-width: 376px) and (max-width: 414px) {
+            .ui-autocomplete {
+                max-width: 382px;
+            }
+
+            .working {
+                background: none;
+            }
+        }
+
+        @media(min-width: 415px) and (max-width: 540px) {
+            .ui-autocomplete {
+                max-width: 508px;
+            }
+        }
+
+        @media(min-width: 1024px) {
+            .ui-autocomplete {
+                max-width: 428px;
+            }
+        }
+        /*@media(max-width: 768px) {
+            .show {
+               
+                display: none;       
+
+            }
+
+        }*/ /*alterado dia 21/05*/
+        select {
+            width: 50%;
+            float: left;
+            color: #000000;
+            background-color: #FFFFFF;
+            border: 2px solid #ACACAC;
+            box-sizing: border-box;
+            height: 40px;
+            padding: 0 12px;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            margin-bottom: 10px;
+            text-transform:uppercase;
+        }
+        #msgNoResults{
+            display:none;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="header" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+    <!--[if lte IE 8]>
+        <script type="text/javascript">
+            location.assign('ie/aviso.html');
+        </script>
+    <![endif]-->
+
+
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '228600538862265');
+        fbq('track', 'PageView');
+    </script>
+
+</head>
+
+<body id="bodymain" runat="server">
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <% HttpCookie LOGADO = Request.Cookies["LOGADO"];
+        HttpCookie NOME_USUARIO = Request.Cookies["NOME_USUARIO"];
+    %>
+    <%-- <div style="border: 1px solid red; height: 40px;"></div>--%>
+    <%--ficar atento para ver qual impacto do bloco acima - alterado dia 21/05--%>
+    <nav class="navbar navbar-dark d-block w-100">
+        <div style="background-color: #2C2F6E; height: 40px; color: white; width: 100%; text-align: center; white-space: nowrap;"><i class="fas fa-angle-left" style="color: white; border: 1px solid white; border-radius: 50px; width: 25px; height: 25px; padding: 0px; margin-top: 8px; margin-right: 10px; padding-right: 2px;"></i><a href="https://anajustrafederal.org.br" style="text-decoration: none; color: white; text-transform: uppercase; vertical-align: super">Ir para o site da ANAJUSTRA Federal</a></div>
+        <div class="container">
+            <div class="w-100">
+                <div class="row align-items-center">
+                    <div id="navbar-menu" class="col-08">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="/" title="Anajustra">
+                            <img src="/img/logo-anajustra.png" alt="Anajustra" title="Anajustra" />
+                        </a>
+                        <div class="navbar-top">
+                            <a href="/convenios">Convênios</a>
+                            <a href="/solucoesfinanceiras">Soluções Financeiras</a>
+                            <%--                            <a href="https://www.anajustra.org.br/ar/brb/" target="_blank">Cartão de Crédito</a>--%>
+                            <a href="https://www.anajustracorretora.com.br/" target="_blank">Anajustra Corretora</a>
+
+                            <div class="dropdown">
+                              <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                MAIS
+                              </button>
+                              <ul class="dropdown-menu">
+                                
+                                <li><a class="dropdown-item" href="/convenios">Início</a></li>
+                                <li><a class="dropdown-item" href="/todos-convenios">Todos</a></li>
+                                  <li><a class="dropdown-item" href="/perto-de-voce">Perto de você</a></li>
+                                  <li><a class="dropdown-item" href="/sugira_parceiro">Sugira um convênio</a></li>
+                                  <li><a class="dropdown-item" href="/simulador-economia">Simulador de economia</a></li>
+                                  <li><a class="dropdown-item" href="/perguntas-frequentes">Perguntas frequentes</a></li>
+                                  <li><a class="dropdown-item" href="/contato">Contato</a></li>
+                              </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <% if (LOGADO == null)
+                        {
+                    %>
+                    <div id="login-menu" class="col-2 col-md-2 text-right">
+                        <div class="area-restrita-topo">
+                            <i class="fas fa-lock"></i>
+                            <span>Fazer login</span>
+                            <div class="menu-area-restrita text-center">
+                                <h3 class="text-white mb-3">Login</h3>
+                                <input type="text" class="form-control mb-1 border-0 cpf" id="cpf" placeholder="CPF" />
+                                <input type="password" class="form-control mb-1 border-0" id="senha" placeholder="Senha" />
+                                <div class="text-right">
+                                    <label for="logado">Permanecer logado</label>
+                                    <input type="radio" id="logado" value="sim" />
+                                </div>
+                                <button class="btn btn-secondary mb-3 bt_login" id="acessar">Acessar</button>
+                                <a href="" class="text-white text-center">Esqueceu sua senha?</a>
+                            </div>
+                        </div>
+                        <a href="https://www.anajustra.org.br/associe-se/" class="area-restrita-topo" target="_blank">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Associe-se</span>
+                        </a>
+                    </div>
+                    <%
+                        }
+                        else
+                        {%>
+
+                    <div class="col-2 text-right">
+                        <div class="area-restrita-topo">
+                            <i class="fas fa-user-circle"></i>
+                            <span><% Response.Write(NOME_USUARIO.Value); %></span>
+                            <i class="fas fa-angle-down"></i>
+                            <div class="menu-area-restrita">
+                                <div class="text-right">
+                                    <a href="/meus-favoritos" class="button-favorite"><i class="fas fa-heart"></i>Meus Favoritos</a>
+                                    <%-- <a href="/cupons-resgatados" class="button-cuppons"><i class="fas fa-ticket-alt"></i>Cupons Resgatados</a>--%>
+                                    <a href="/cartao-associado" class="button-card"><i class="fas fa-id-card"></i>Cartão do Associado</a>
+                                    <a href="/login/logout.ashx" class="button-exit"><i class="fas fa-sign-out-alt"></i>Sair</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse w-100" id="menu-principal">
+
+            <div class="container">
+                <div class="search-top">
+                    <input type="text" name="busca" id="benefit-name" placeholder="Pesquise nossa rede conveniada">
+                    </input>
+
+                    <select data-localities id="localidade" name="localidade">
+                        <option value="">Localidade</option>
+                    </select>
+
+                    <input type="hidden" id="txtLocalitie" name="txtLocalitie" value="">
+                    &nbsp;&nbsp;
+                    <button class="button-search" id="btnBuscarTop" type="submit"><i class="fas fa-search"></i></button>
+
+                    <select data-localitiescategories id="localidadeCateg" style="margin-left: 65px;">
+                    <option value="">Localidade</option>
+                </select>
+                <select data-conteudo-categoriasf id="categoriasf" >
+                    <option value="">CATEGORIA</option>
+                </select>
+
+                <select data-conteudo-categoriasc id="categoriasc">
+                    <option value="">SUBCATEGORIA</option>
+                </select>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <asp:ContentPlaceHolder ID="content" runat="server">
+    </asp:ContentPlaceHolder>
+    <footer>
+        <div class="container">
+            <div class="row footer-top">
+                <div class="col redes-sociais-rodape">
+                    <a href="https://www.facebook.com/anajustrafederal/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.instagram.com/anajustra/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+           
+                <div class="col">
+                    <h3>CENTRAL DE ATENDIMENTO</h3>
+                    <a href="/Avalie-parceiro">Avalie um convênio</a>
+                    <a href="/seja-parceiro">Seja um parceiro</a>
+                    <a href="/sugira_parceiro">Sugira um convênio</a>
+                    <a href="/relate-problema">Problemas com algum parceiro?</a>
+                    <a href="/perguntas-frequentes">Perguntas frequentes</a>
+                    <a href="/contato">Fale conosco</a>
+                    <a href="/sobre">Sobre</a>
+                </div>
+                <div class="col">
+                    <h3>QUER SER UM PARCEIRO?</h3>
+                    <a href="/seja-parceiro">Cadastre sua empresa</a>
+                </div>
+               	<div class="col" style="overflow: visible;">
+						<section class="bg-newsletter-home">
+							<div class="container" style="overflow: visible;">
+								<div class="envolve-news">
+									<div class="voce-bem-informado">
+										<h3 class="text-voce-bem">Você bem informado</h3>
+									</div>
+									<div class="envolve-icon-text">
+										<i class="fa fa-angle-double-right icone-news" style="font-size: 15px" color="#537cd4"></i>
+										<span class="texto-newsletter">Receba as últimas notícias e novidades no seu e-mail</span>
+									</div>
+
+									<div class="envolve-input">
+
+										<input type="text" class="form-control newsletter-home emailFormNews" autocomplete="off" placeholder="SEU E-MAIL" value="" />
+										<select type="text" class="newsletter-home selected-beneficios associadoFormNews" placeholder="Já é associado ANAJUSTRA Federal">
+											<option disabled="disabled" selected="selected" value="" style="color: grey;">Já é associado ANAJUSTRA FEDERAL?</option>
+											<option value="SIM">SIM</option>
+											<option value="NÃO">NÃO</option>
+										</select>
+									</div>
+
+								</div>
+								<a href="#" class="btn btn-primary btn-home btn_enviar_news">RECEBER</a>
+								<div class="envolve-politica">
+									<span class="politica-privacidade"><a href="https://anajustrafederal.org.br/politica-privacidade/" target="_blank" style="text-decoration: underline; color: #0c0c0c"><span class="text-conheca">Conheça nossa&nbsp; </span>política de privacidade</a></span>
+								</div>
+
+							</div>
+						</section>
+					</div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>
+                        0800 643 6864 / sede@anajustra.org.br<br />
+                        Edifício Centro Empresarial Varig | Setor SCN - Quadra 04 - Bloco B - Sala 903 |Brasília – DF - CEP 70714-020<br />
+                        Associação Nacional dos Servidores do Judiciário Federal - ANAJUSTRA Federal | CNPJ: 04.435.721/0001-85
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/plugins/mascara.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/plugins/owl.carousel.min.js" language="JavaScript" type="text/javascript"></script>
+    <script src="/js/plugins/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="/js/api/serviceAnajustra.js"></script>
+    <script type="text/javascript" src="/js/api/serviceNewvalue.js?v=08082022"></script>
+    <script type="text/javascript" src="/js/api/viewNewvalue.js?v=16052022"></script>
+
+    <script src="/js/script_login.js"></script>
+    <script src="/js/plugins/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/Notiflix-1.8.0/Minified/notiflix-1.8.0.min.js"></script>
+
+
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script language="JavaScript" type="text/javascript" src="/js/app.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/plugins/lazyload.min.js"></script>
+    <script>
+        (function () {
+            var ll = new LazyLoad({
+                threshold: 0
+            });
+
+            loadLocalities();
+
+            var latitude = localStorage.getItem("location-latitude");
+
+            if (latitude === null) {
+                accessLocationNavigator()
+            }
+
+            $(document).ready(function () {
+                if ($.cookie('SINDICALIZADO') != 'S') {
+                    $(".button-card").css({ "display": "none" })
+                }
+            })
+
+            $("body").click(function (e) {
+                $(".menu-area-restrita").removeClass("menu-active");
+            })
+
+
+            $("#localizacao").click(function (event) {
+                $(location).attr('href', "/perto-de-voce")
+            });
+
+            $(".button-exit").click(function (event) {
+                window.localStorage.clear()
+            });
+
+            $(".navbar-brand").click(function (event) {
+                window.localStorage.removeItem('search-cidade')
+                window.localStorage.removeItem('search')
+                localStorage.removeItem("noSearch")
+            });
+
+            $(".link-home").click(function (event) {
+                window.localStorage.removeItem('search-cidade')
+                window.localStorage.removeItem('search')
+                localStorage.removeItem("noSearch")
+            });
+
+            $(".navbar-toggler").click(function () {
+                if ($(window).width() >= 769) {
+                    $('#convenio-mobile').css({ "display": "inline-block" })
+                } else {
+                    $('#convenio-mobile').css({ "display": "inline-block" })
+                }
+            });
+
+            if ($(window).width() >= 998) {
+                $('.navbar-collapse').addClass("show")
+            }
+
+            $(document).on("click", '.area-restrita-topo', function () {
+                $(".menu-area-restrita").addClass("menu-active");
+            });
+
+            $(".search-top").click(function (event) {
+                localStorage.setItem("search", document.getElementById("benefit-name").value)
+            })
+
+            $('#localidade').on('change', function () {
+                $(location).attr('href', "/convenios-localidade/" + this.value + "/" + $("#localidade option:selected").text().generateClass())
+                localStorage.setItem('clickedCategory', $("#localidade option:selected").text())
+
+                //alert(this.value);
+            });
+
+        }());
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176357328-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-176357328-1');
+    </script>
+
+    <script>
+
+        $('#benefit-name').keyup(function () {
+            qty = $(this).val();
+
+            if (qty.length < 1) {
+
+                //$(this).addClass('working');
+                //if (qty == "") {
+                //    $(this).removeClass('working');
+                //}
+
+            } else {
+                //$(this).removeClass('working');
+
+                var limit = 10;
+                var page = 1;
+
+                var accentMap = {
+                    "á": "a",
+                    "á": "a",
+                    "à": "a",
+                    "â": "a",
+                    "ã": "a",
+                    "ª": "a",
+                    "Á": "A",
+                    "À": "A",
+                    "Â": "A",
+                    "Ã": "A",
+                    "é": "e",
+                    "è": "e",
+                    "ê": "e",
+                    "É": "e",
+                    "È": "e",
+                    "Ê": "e",
+                    "í": "i",
+                    "ì": "i",
+                    "î": "i",
+                    "Í": "I",
+                    "Ì": "I",
+                    "Î": "I",
+                    "ö": "o",
+                    "ó": "o",
+                    "ò": "o",
+                    "ô": "o",
+                    "õ": "o",
+                    "º": "o",
+                    "Ó": "O",
+                    "Ò": "O",
+                    "Ô": "O",
+                    "Õ": "O",
+                    "ú": "u",
+                    "ù": "u",
+                    "û": "u",
+                    "Ú": "U",
+                    "Ù": "U",
+                    "Û": "U",
+                    "ç": "c",
+                    "Ç": "C"
+                };
+                var normalize = function (term) {
+                    var ret = "";
+                    for (var i = 0; i < term.length; i++) {
+                        ret += accentMap[term.charAt(i)] || term.charAt(i);
+                    }
+                    return ret;
+                };
+
+                //searchBenefitsAutoComplete(qty, tkn, limit, page).then(result => {
+                searchBenefitsAutoComplete(qty, "", limit, page).then(result => {
+                    var array = new Array();
+                    array = [];
+                    var count = 0;
+
+                    result.forEach(index => {
+
+                        array[count] = new Array(3);
+                        array[count]["title"] = index.meta.partner.replace(" - (Exclusivo ANAJUSTRA)", "").replace(" (Exclusivo ANAJUSTRA)", "") + " - " + index.post_title;
+                        array[count]["id"] = index.ID;
+                        array[count]["name"] = index.meta.partner.replace(" - (Exclusivo ANAJUSTRA)", "").replace(" (Exclusivo ANAJUSTRA)", "");
+                        count++;
+                    })
+
+
+                    var source = [];
+                    var mapping = {};
+                    for (var i = 0; i < array.length; ++i) {
+                        source.push(array[i].title);
+                        mapping["'" + array[i].title + "'"] = "/convenio/" + array[i].name.generateClass() + "/" + array[i].id + "";
+                    }
+
+                    $("#benefit-name").autocomplete({
+                        source: function (request, response) {
+                            var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                            response($.grep(source, function (value) {
+
+                                console.log(value);
+                                value = value.label || value.value || value;
+                                return matcher.test(value) || matcher.test(normalize(value));
+                            }));
+                        },
+                        select: function (event, ui) {
+                            window.location.href = mapping["'" + ui.item.value + "'"];
+                        }
+                    });
+
+                })
+            }
+
+        });
+
+    </script>
+    <script>
+        $("#preloader").show();
+
+        setTimeout(function () {
+            $("#preloader").hide();
+        }, 3000)
+
+        var page = 1;
+        var limit = 36;
+
+        loadLocalitiesCategories();
+        loadBenefitsAll(limit, page);
+
+        $(document).on("click", "#loadMore", function () {
+            $("#preloader").show();
+            page++;
+            loadBenefitsAll(limit, page);
+            setTimeout(function () {
+                $("#preloader").hide();
+            }, 1500);
+        });
+
+        //$(document).on("click", ".btn-categorie", function () {
+        //    var url = "/categoria-convenio/" + $(this).attr("id") + "/" + $(this).attr('data-href')
+        //    localStorage.setItem('clickedCategory', $(this).text())
+        //    setTimeout(function () { $(location).attr('href', url) }, 300)
+        //})
+
+        var latitude = localStorage.getItem("location-latitude");
+        var longitude = localStorage.getItem("location-longitude");
+        var city = $.cookie('CIDADE');
+
+        //if (city != null) {
+        //    loadBenefitsPertoCasa(limit, page, city);
+        //} else {
+        //}
+
+        if (latitude != null) {
+            loadBenefitsPertoEsta(8, 1, latitude, longitude);
+            $("#erro-beneficios").hide();
+        } else {
+            accessLocationNavigator()
+            $("#erro-beneficios").show();
+        }
+
+
+        $("#localidadeCateg").change(function () {
+            $("#preloader").show();
+            loadCategoriesFather();
+            setTimeout(function () {
+                $("#preloader").hide();
+            }, 1000)
+        });
+
+
+        $("#categoriasf").change(function () {
+            $("#preloader").show();
+            var localidade = $("#localidadeCateg").val();
+            var valor = this.value;
+
+            var txtLocalidade = $("#localidadeCateg option:selected").text();
+            var texto = $("#categoriasf option:selected").text();
+
+            if (txtLocalidade == " Todas") {
+                localStorage.setItem('clickedLocalitie', "Todas as localidades");
+            } else {
+                localStorage.setItem('clickedLocalitie', txtLocalidade);
+            }
+
+            localStorage.setItem('clickedCategory', texto);
+
+            if (valor != "25" && valor != "28" && valor != "23") {
+                loadCategoriesChildren(valor);
+            } else {
+                if ($("#localidadeCateg").val() != "") {
+                    window.location.href = `/categoria-convenio/${valor}/${localidade}/${texto.generateClass()}`;
+                } else {
+                    Notiflix.Report.Failure('Opss', 'É necessário selecionar a localidade.', 'OK')
+                }
+            }
+            setTimeout(function () {
+                $("#preloader").hide();
+            }, 2000)
+        });
+
+        $("#categoriasc").change(function () {
+            var valor = this.value;
+            var localidade = $("#localidadeCateg").val();
+
+            var txtLocalidade = $("#localidadeCateg option:selected").text();
+            var texto = $("#categoriasc option:selected").text();
+
+            if (txtLocalidade == " Todas") {
+                localStorage.setItem('clickedLocalitie', "Todas as localidades");
+            } else {
+                localStorage.setItem('clickedLocalitie', txtLocalidade);
+            }
+
+            localStorage.setItem('clickedCategory', texto);
+
+            if ($("#localidadeCateg").val() != "") {
+                window.location.href = `/categoria-convenio/${valor}/${localidade}/${texto.generateClass()}`;
+            } else {
+                Notiflix.Report.Failure('Opss', 'É necessário selecionar a localidade.', 'OK')
+            }
+        });
+
+
+
+    </script>
+   <script>
+       (function () {
+           var ll = new LazyLoad({
+               threshold: 0
+           });
+
+           loadLocalities();
+
+           var latitude = localStorage.getItem("location-latitude");
+
+           if (latitude === null) {
+               accessLocationNavigator()
+           }
+
+           $(document).ready(function () {
+               if ($.cookie('SINDICALIZADO') != 'S') {
+                   $(".button-card").css({ "display": "none" })
+               }
+           })
+
+           $("body").click(function (e) {
+               $(".menu-area-restrita").removeClass("menu-active");
+           })
+
+
+           $("#localizacao").click(function (event) {
+               $(location).attr('href', "/perto-de-voce")
+           });
+
+           $(".button-exit").click(function (event) {
+               window.localStorage.clear()
+           });
+
+           $(".navbar-brand").click(function (event) {
+               window.localStorage.removeItem('search-cidade')
+               window.localStorage.removeItem('search')
+               localStorage.removeItem("noSearch")
+           });
+
+           $(".link-home").click(function (event) {
+               window.localStorage.removeItem('search-cidade')
+               window.localStorage.removeItem('search')
+               localStorage.removeItem("noSearch")
+           });
+
+           $(".navbar-toggler").click(function () {
+               if ($(window).width() >= 769) {
+                   $('#convenio-mobile').css({ "display": "inline-block" })
+               } else {
+                   $('#convenio-mobile').css({ "display": "inline-block" })
+               }
+           });
+
+           if ($(window).width() >= 998) {
+               $('.navbar-collapse').addClass("show")
+           }
+
+           $(document).on("click", '.area-restrita-topo', function () {
+               $(".menu-area-restrita").addClass("menu-active");
+           });
+
+           $("#btnBuscarTop").click(function (event) {
+               if (document.getElementById("benefit-name").value == "") {
+                   Notiflix.Report.Failure('Opss', 'É necessário informar uma palavra para que possamos fazer a busca.', 'OK')
+               } else {
+                   if (document.getElementById("localidade").value == "") {
+                       Notiflix.Report.Failure('Opss', 'Você esqueceu de escolher a localidade.', 'OK')
+                   } else {
+                       localStorage.setItem("search", document.getElementById("benefit-name").value);
+                       localStorage.setItem("clickedLocalitieId", document.getElementById("localidade").value);
+
+                       if (document.getElementById("txtLocalitie").value == " Todas") {
+                           localStorage.setItem("clickedLocalitie", "Todas as localidades");
+                       } else {
+                           localStorage.setItem("clickedLocalitie", document.getElementById("txtLocalitie").value);
+                       }
+
+                       window.location.href = `/busca-beneficios/${document.getElementById("benefit-name").value}/${document.getElementById("txtLocalitie").value.generateClass()}`;
+                   }
+               }
+           })
+
+           $('#localidade').on('change', function () {
+               //$(location).attr('href', "/convenios-localidade/" + this.value + "/" + $("#localidade option:selected").text().generateClass())
+               //localStorage.setItem('clickedCategory', $("#localidade option:selected").text())
+               $("#txtLocalitie").val($("#localidade option:selected").text())
+           });
+
+
+
+       }());
+   </script>
+
+    <noscript>
+        <img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=228600538862265&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+</body>
+</html>
